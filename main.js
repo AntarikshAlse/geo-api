@@ -13,21 +13,9 @@ async function getLocation(e) {
       "Geolocation is not supported by this browser.";
   }
 }
-
+/* NOTE : openstreet & visualcrossing API are used for fetching data
+ */
 function showPosition(position) {
-  //   mapContainer.innerHTML = `
-  //   <iframe
-  //   width="400"
-  //   height="400"
-  //   style="border: 0"
-  //   class="text-center"
-  //   loading="lazy"
-  //   allowfullscreen
-  //   referrerpolicy="no-referrer-when-downgrade"
-  //   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCToTXSpA6hZX9-KoyQjpkGT2XbEhxBg6k&q=Aurangabad
-  // &center=${position.coords.latitude},${position.coords.longitude}"
-  // >
-  // </iframe>`;
   Coordinates.innerHTML = `Latitude: ${position.coords.latitude} &nbsp;&nbsp; Longitude: ${position.coords.longitude}`;
   mapContainer.innerHTML = `
   <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=75.32151460647584%2C19.845559172986448%2C75.34910917282106%2C19.859020879862367&amp;layer=mapnik&amp;marker=19.852290169168814%2C75.33531188964844" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=19.8523&amp;mlon=75.3353#map=16/${position.coords.latitude}/${position.coords.longitude}">View Larger Map</a></small>
@@ -40,7 +28,6 @@ function showPosition(position) {
 }
 const fetchData = async ({ lat, lng }) => {
   //e.preventDefault();
-
   const accessKey = "WQGBZXUWWNHEU887XUKWXGWE7";
   const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lng}?unitGroup=us&include=current&key=${accessKey}&contentType=json`;
   let response = "";
