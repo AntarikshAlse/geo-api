@@ -13,8 +13,6 @@ async function getLocation(e) {
       "Geolocation is not supported by this browser.";
   }
 }
-/* NOTE : openstreet & visualcrossing API are used for fetching data
- */
 function showPosition(position) {
   Coordinates.innerHTML = `Latitude: ${position.coords.latitude} &nbsp;&nbsp; Longitude: ${position.coords.longitude}`;
   mapContainer.innerHTML = `
@@ -28,8 +26,8 @@ function showPosition(position) {
 }
 const fetchData = async ({ lat, lng }) => {
   //e.preventDefault();
-  const accessKey = "WQGBZXUWWNHEU887XUKWXGWE7";
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lng}?unitGroup=us&include=current&key=${accessKey}&contentType=json`;
+  const accessKey = "3c0d5d1133bb95e52877861f5f43c96c";
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${accessKey}`;
   let response = "";
   try {
     response = await fetch(url);
@@ -42,7 +40,7 @@ const fetchData = async ({ lat, lng }) => {
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Location :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.address}</h6>
+          <h6 class="card-subtitle my-2">${data.name}</h6>
         </div>
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">TimeZone :</h6>
@@ -54,48 +52,48 @@ const fetchData = async ({ lat, lng }) => {
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Latitude :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.latitude}</h6>
+          <h6 class="card-subtitle my-2">${data.coord.lat}</h6>
         </div>
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Longitude :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.longitude}</h6>
+          <h6 class="card-subtitle my-2">${data.coord.lon}</h6>
         </div>
       </div>
       <div class="row  p-2">
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">WindSpeed :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.windspeed} Km/s</h6>
+          <h6 class="card-subtitle my-2">${data.wind.speed} Km/s</h6>
         </div>
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Preassure :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.pressure} Pa </h6>
+          <h6 class="card-subtitle my-2">${data.main.pressure} Pa </h6>
         </div>
       </div>
       <div class="row  p-2">
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Humidity :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.humidity}</h6>
+          <h6 class="card-subtitle my-2">${data.main.humidity}</h6>
         </div>
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Wind Direction :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.winddir}</h6>
+          <h6 class="card-subtitle my-2">${data.wind.deg}</h6>
         </div>
       </div>
       <div class="row  p-2">
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">UV Index :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.uvindex}</h6>
+          <h6 class="card-subtitle my-2">${data.wind.gust}</h6>
         </div>
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Feels Like :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.currentConditions.feelslike} °C</h6>
+          <h6 class="card-subtitle my-2">${data.main.feels_like} °C</h6>
         </div>
       </div>
     </div>
