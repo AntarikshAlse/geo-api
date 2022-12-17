@@ -93,7 +93,7 @@ const fetchData = async ({ lat, lng }) => {
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Feels Like :</h6>
           &nbsp;
-          <h6 class="card-subtitle my-2">${data.main.feels_like} °C</h6>
+          <h6 class="card-subtitle my-2">${data.main.feels_like} °F</h6>
         </div>
       </div>
     </div>
