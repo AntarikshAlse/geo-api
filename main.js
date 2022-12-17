@@ -16,7 +16,7 @@ async function getLocation(e) {
 function showPosition(position) {
   Coordinates.innerHTML = `Latitude: ${position.coords.latitude} &nbsp;&nbsp; Longitude: ${position.coords.longitude}`;
   mapContainer.innerHTML = `
-  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=75.32151460647584%2C19.845559172986448%2C75.34910917282106%2C19.859020879862367&amp;layer=mapnik&amp;marker=19.852290169168814%2C75.33531188964844" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=19.8523&amp;mlon=75.3353#map=16/${position.coords.latitude}/${position.coords.longitude}">View Larger Map</a></small>
+  <iframe width="720" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=75.32151460647584%2C19.845559172986448%2C75.34910917282106%2C19.859020879862367&amp;layer=mapnik&amp;marker=19.852290169168814%2C75.33531188964844" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=19.8523&amp;mlon=75.3353#map=16/${position.coords.latitude}/${position.coords.longitude}">View Larger Map</a></small>
 `;
   const cord = {
     lat: position.coords.latitude,
